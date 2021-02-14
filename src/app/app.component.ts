@@ -1,10 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {MatDialog,MatDialogRef, throwMatDialogContentAlreadyAttachedError} from '@angular/material/dialog';
+import { Router, ActivatedRoute, ParamMap, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private dialog: MatDialog,private router: Router,private route: ActivatedRoute) {}
   title = 'newspaper';
+  loginFlag:boolean=false;
+  signFlag:boolean=false;
+  loginForm: FormGroup;
+  loginResult:any;
+  logoutFlag:boolean=false;
+  routes: ActivatedRoute;
+ 
+ loginClick() {
+     
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width:'350px',
+      height:'275px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      this.loginResult=result.data;
+    })
 }
+
+ngOnInit(): void {
+  this.loginResult=0;
+  }
+
+logoutClick(){
+   this.loginResult=0;
+}
+
+
+signClick() {
+
+  // const dialogConfig = new MatDialogConfig();// dialogConfig.disableClose = true;// dialogConfig.autoFocus = true;
+  this.dialog.open(SignUpComponent, {
+    width:'350px',
+    height:'460px'
+  });
+  }
+ 
+}
+
+
+
+
+
+
+
