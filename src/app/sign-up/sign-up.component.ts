@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
 
   userSign:FormGroup;
 
-  constructor(private formBuider:FormBuilder , private _appService :AppService) {
+  constructor(private formBuider:FormBuilder , private _appService :AppService,public dialogRef: MatDialogRef<SignUpComponent>) {
 
    }
 
@@ -29,9 +29,15 @@ export class SignUpComponent implements OnInit {
     });
   
 }
+get uname() { return this.userSign.get('uname'); }
+get pword() { return this.userSign.get('pword');}
+get email() { return this.userSign.get('email'); }
+get id() { return this.userSign.get('id');}
+get name() { return this.userSign.get('name'); }
 
 register(){
   // console.log(this.attenForm.value);
+  if(this.userSign.valid){
    let userRegister=[];
   userRegister.push(this.userSign.value);
   console.log(userRegister);
@@ -40,6 +46,10 @@ register(){
     console.log(data);
     
   });
-
+  }
+}
+signupClose(){
+  this.dialogRef.close();
+  
 }
 }

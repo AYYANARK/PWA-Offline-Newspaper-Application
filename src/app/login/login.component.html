@@ -1,12 +1,32 @@
 <h2 align="center">Login</h2>
 <form [formGroup]="userLogin">
     <div class="form-group">
-        <input type="text" formControlName="uname" class="form-control" name="uname" placeholder="Username" ngModel>
+        <input id="uname" class="form-control"
+        formControlName="uname" placeholder="Username" required >
+
+        <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger">
+        <div *ngIf="uname.errors.required">
+          Username is required.
+        </div>
       </div>
-      <div class="form-group">
-        <input type="password" formControlName="pword" class="form-control" name="pword" placeholder="Password" ngModel>
+    </div>
+        <div class="form-group">
+        <input type="password" formControlName="pword" class="form-control" id="pword"  placeholder="Password" ngModel required>
+       <div *ngIf="pword.invalid && (pword.dirty || pword.touched)" class="alert alert-danger">
+            <div *ngIf="pword.errors.required">
+              Password is required.
+            </div>
+          </div>
       </div>
-    <button type="submit" (click)="login()" class="btn btn-primary" >Submit</button>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12  text-right">
+              <button type="submit" (click)="loginClose()" class="btn btn-danger" >Close</button>&nbsp;&nbsp;
+              <button type="submit" (click)="login()" class="btn btn-primary" >Submit</button>
+              
+            </div>
+         </div>
+      </div>
   </form>
   
 

@@ -1,24 +1,56 @@
 <h2 align="center">Sign Up</h2>
 <form [formGroup]="userSign">
     <div class="form-group">
-        <input type="text" formControlName="name" class="form-control" name="name" placeholder="Name" ngModel>
+        <input id="name" required type="text" formControlName="name" class="form-control"  placeholder="Name" ngModel>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+        </div>
       </div>
       <div class="form-group">
-        <input type="text" formControlName="id" class="form-control" name="id" placeholder="ID Number" ngModel>
+        <input id="id" required type="text" formControlName="id" class="form-control"  placeholder="ID Number" ngModel>
+        <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+          <div *ngIf="id.errors.required">
+            ID is required.
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <input type="text" formControlName="jd" class="form-control" name="jd" placeholder="Job Role" ngModel>
       </div>
     <div class="form-group">
-      <input type="email" formControlName="email" class="form-control" name="email" placeholder="E-mail" ngModel>
+      <input id="email" required type="email" formControlName="email" class="form-control" placeholder="E-mail" ngModel>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+      </div>
     </div>
     <div class="form-group">
-      <input type="text" formControlName="uname" class="form-control" name="uname" placeholder="User Name" ngModel>
+      <input id="uname" required type="text" formControlName="uname" class="form-control" placeholder="User Name" ngModel>
+      <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger">
+        <div *ngIf="uname.errors.required">
+          Username is required.
+        </div>
+      </div>
     </div>
     <div class="form-group">
-      <!-- <label for="exampleInputPassword1">Password</label> -->
-      <input type="password" formControlName="pword" class="form-control" name="pword" placeholder="Password" ngModel>
+      <input id="pword" required type="password" formControlName="pword" class="form-control" placeholder="Password" ngModel>
+      <div *ngIf="pword.invalid && (pword.dirty || pword.touched)" class="alert alert-danger">
+        <div *ngIf="pword.errors.required">
+          Password is required.
+        </div>
+      </div>
     </div>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-right">
+            <button type="submit" (click)="signupClose()" class="btn btn-danger" >Close</button>&nbsp;&nbsp;
     <button type="submit" (click)="register()" class="btn btn-primary">Submit</button>
+    
+    </div>
+  </div>
+</div>
   </form>
 

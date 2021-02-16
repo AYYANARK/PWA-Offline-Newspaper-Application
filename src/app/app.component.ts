@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import {MatDialog,MatDialogRef, throwMatDialogContentAlreadyAttachedError} from '@angular/material/dialog';
+import {MatDialog,MatDialogConfig,MatDialogRef, throwMatDialogContentAlreadyAttachedError} from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap, NavigationExtras } from '@angular/router';
 
 @Component({
@@ -22,14 +22,18 @@ export class AppComponent implements OnInit {
  
  loginClick() {
      
-    const dialogRef = this.dialog.open(LoginComponent, {
-      width:'350px',
-      height:'275px'
+    const dialogRef = this.dialog.open(LoginComponent, { disableClose: true,autoFocus:true,width:'350px',
+      height:'240px'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
-      this.loginResult=result.data;
+       this.loginResult=result.data;
+       if(this.loginResult=="0")
+       {
+         alert("Wrong Credentials");
+         this.loginClick();
+       }
     })
 }
 
@@ -44,10 +48,10 @@ logoutClick(){
 
 signClick() {
 
-  // const dialogConfig = new MatDialogConfig();// dialogConfig.disableClose = true;// dialogConfig.autoFocus = true;
-  this.dialog.open(SignUpComponent, {
-    width:'350px',
-    height:'460px'
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  this.dialog.open(SignUpComponent, { disableClose: true,panelClass: 'my-dialog',autoFocus:true,width:'350px',height:'460px'
   });
   }
  

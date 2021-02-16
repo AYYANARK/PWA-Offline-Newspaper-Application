@@ -1,1 +1,15 @@
-<p>reporter works!</p>
+<h2 align="center">Enter the news details</h2>
+<form [formGroup]="reporter">
+    <div class="form-group">
+        <input id="uname" class="form-control"
+        formControlName="uname" placeholder="Username" required >
+    </div>
+        <div class="form-group">
+        <input type="password" formControlName="pword" class="form-control" id="pword"  placeholder="Password" ngModel required>
+      </div>
+      
+  </form>
+  
+
+
+
