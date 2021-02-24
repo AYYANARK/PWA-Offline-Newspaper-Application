@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { AppService } from './app.service';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {MatDialog,MatDialogConfig,MatDialogRef, throwMatDialogContentAlreadyAttachedError} from '@angular/material/dialog';
@@ -11,7 +12,7 @@ import { Router, ActivatedRoute, ParamMap, NavigationExtras } from '@angular/rou
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private dialog: MatDialog,private router: Router,private route: ActivatedRoute) {}
+  constructor(private dialog: MatDialog,private _appService: AppService,private router: Router,private route: ActivatedRoute) {}
   title = 'newspaper';
   loginFlag:boolean=false;
   signFlag:boolean=false;
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   loginResult:any;
   logoutFlag:boolean=false;
   routes: ActivatedRoute;
+  news:any;
  
  loginClick() {
      
@@ -39,7 +41,13 @@ export class AppComponent implements OnInit {
 
 ngOnInit(): void {
   this.loginResult=0;
-  }
+  this._appService.getNews().subscribe((newsData)=>{
+    console.log(newsData);
+     this.news=newsData;
+     console.log(this.news[0].evidence);
+     
+    });
+}
 
 logoutClick(){
    this.loginResult=0;

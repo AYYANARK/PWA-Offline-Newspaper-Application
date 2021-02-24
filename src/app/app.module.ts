@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReporterComponent } from './reporter/reporter.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegionComponent } from './region/region.component';
+import {MatCardModule} from '@angular/material/card';
+import { AnonymousComponent } from './anonymous/anonymous.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { RegionComponent } from './region/region.component';
     SignUpComponent,
     ReporterComponent,
     RegionComponent,
+    AnonymousComponent,
     
   ],
   imports: [
@@ -25,6 +28,7 @@ import { RegionComponent } from './region/region.component';
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatCardModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

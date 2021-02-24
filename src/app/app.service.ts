@@ -15,7 +15,14 @@ export class AppService {
   loginCheck(userLoginCheck){
     console.log(userLoginCheck);
     return this.http.post("http://localhost/news/logincode.php",userLoginCheck,{responseType: 'text'});
+}
+  newsSubmit(news){
+    console.log(news);
+    return this.http.post("http://localhost/news/newsSubmit.php",news,{responseType: 'text'});
 
+  }
+  getNews(){
+    return this.http.get<any>('http://localhost/news/viewNews.php');
   }
 
 

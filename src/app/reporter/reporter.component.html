@@ -1,15 +1,70 @@
 <h2 align="center">Enter the news details</h2>
+<br><br>
+<div class="reporterForm">
 <form [formGroup]="reporter">
-    <div class="form-group">
-        <input id="uname" class="form-control"
-        formControlName="uname" placeholder="Username" required >
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Headline</label>
+        <div class="col-sm-7">
+        <input type="text" id="heading" class="form-control"
+        formControlName="heading" required ngModel>
+        </div>
     </div>
-        <div class="form-group">
-        <input type="password" formControlName="pword" class="form-control" id="pword"  placeholder="Password" ngModel required>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Sub-Heading</label>
+            <div class="col-sm-7">
+        <input type="text" id="subHeading" class="form-control"
+        formControlName="subHeading" required ngModel>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Description</label>
+        <div class="col-sm-7">
+        <textarea type="text" id="description" rows="8" cols="70" class="form-control"
+        formControlName="description" required ngModel></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Place</label>
+        <div class="col-sm-4">
+        <input type="text" id="place" class="form-control"
+        formControlName="place" required ngModel>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Category</label>
+        <div class="col-sm-4">
+    <select id="category" class="form-control" formControlName="category" required ngModel> 
+        <option selected>National</option>
+        <option>International</option>
+        <option>Regional</option>
+        <option>Entertainment</option>
+        <option>Sports</option>
+      </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">News Date</label>
+        <div class="col-sm-3">
+        <input type="date" id="newsDate" class="form-control"
+        formControlName="newsDate" required ngModel>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Evidence File</label>
+        <div class="col-sm-3">
+        <input type="file" id="evidence" class="form-control"
+        formControlName="evidence" required ngModel>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+    <button type="submit" (click)="newsSubmit()" class="btn btn-primary" >Submit</button>&nbsp;&nbsp;
+    <button type="submit" (click)="reset()" class="btn btn-secondary" >Reset</button>
       </div>
-      
+      </div></div>
   </form>
-  
+  </div>
 
 
 

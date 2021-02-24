@@ -1,7 +1,8 @@
 <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
-<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> </script> 
 <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"> </script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"> </script> 
+
 
   <nav class="navbar navbar-expand-sm navbar-light"> 
   
@@ -27,4 +28,26 @@
 <br>
 
 <div *ngIf="loginResult=='0'"><app-region></app-region></div>
+<div *ngIf="loginResult=='0'">
+  <div align="center" class="col-sm-4">
+    <ng-container *ngFor="let n of news">
+  <mat-card>
+    <mat-card-content>
+      <!-- {{n.evidence}} -->
+      {{n.category}}
+    </mat-card-content>
+    <mat-card-header>
+      <!-- {{n.evidence}} -->
+      <!-- {{n.category}} -->
+      <mat-card-title>{{n.heading}}</mat-card-title>
+      <mat-card-content>{{n.date}}</mat-card-content>
+      
+    </mat-card-header>
+    
+   
+  </mat-card>
+  </ng-container>
+  </div>
+</div>
+<div *ngIf="loginResult=='1'"><app-reporter></app-reporter></div>
 <router-outlet></router-outlet>
