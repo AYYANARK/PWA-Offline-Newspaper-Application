@@ -24,6 +24,13 @@ export class AppService {
   getNews(){
     return this.http.get<any>('http://localhost/news/viewNews.php');
   }
+  newsUserSubmit(userSubmit){
+    console.log(userSubmit);
+    return this.http.post("http://localhost/news/newsUserSubmit.php",userSubmit,{responseType:'text'});
 
+  }
+   getUserNews(){
+    return this.http.get<any>('http://localhost/news/viewUserNews.php');
+   }
 
 }

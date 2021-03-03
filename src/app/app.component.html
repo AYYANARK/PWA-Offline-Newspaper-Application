@@ -9,13 +9,13 @@
     <ul class="navbar-nav ml-auto"> 
         <li class="nav-item"> 
             
-            <button type="submit" class="nav-link btn btn-link" (click)="signClick()" *ngIf="loginResult=='0'">Sign Up</button> 
+            <button type="submit" class="nav-link btn btn-link" (click)="signClick()" *ngIf="loginResult=='0' && anonymous==false">Sign Up</button> 
         </li> 
         <li class="nav-item"> 
-              <button type="submit" class="nav-link btn btn-link" (click)="loginClick()" *ngIf="loginResult=='0'">Login</button> 
+              <button type="submit" class="nav-link btn btn-link" (click)="loginClick()" *ngIf="loginResult=='0' && anonymous==false">Login</button> 
         </li>  
         <li class="nav-item"> 
-            <button type="submit" class="nav-link btn btn-link" (click)="logoutClick()" *ngIf="loginResult=='1'" >Logout</button> 
+            <button type="submit" class="nav-link btn btn-link" (click)="logoutClick()" *ngIf="loginResult=='1' && anonymous==false" >Logout</button> 
       </li> 
     </ul> 
 </nav> 
@@ -25,29 +25,58 @@
 <font face="Californian FB" size="5">(The newspaper which reflects truth)</font>
 </div>
 <br>
-<br>
+<!-- <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav> -->
 
-<div *ngIf="loginResult=='0'"><app-region></app-region></div>
-<div *ngIf="loginResult=='0'">
-  <div align="center" class="col-sm-4">
+<div *ngIf="loginResult=='0' && anonymous==false">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+  </nav>
+    <app-region></app-region>
+</div>
+<div *ngIf="loginResult=='0'&& anonymous==false">
+  <div class="col-sm-5" >
     <ng-container *ngFor="let n of news">
-  <mat-card>
-    <mat-card-content>
-      <!-- {{n.evidence}} -->
+  <mat-card style="max-width: 300px;">
+  
+    
+      <img mat-card-image src="assets/images/1.jpg" style="height: 300px;">
+      <mat-card-content align="left">
       {{n.category}}
     </mat-card-content>
     <mat-card-header>
       <!-- {{n.evidence}} -->
       <!-- {{n.category}} -->
       <mat-card-title>{{n.heading}}</mat-card-title>
-      <mat-card-content>{{n.date}}</mat-card-content>
+      
       
     </mat-card-header>
+    <mat-card-content align="right">{{n.date}}</mat-card-content>
     
    
   </mat-card>
+  <br><br>
   </ng-container>
   </div>
+  <button type="submit" (click)="newsReport()" class="btn btn-primary float-right" >Report The News</button>
 </div>
-<div *ngIf="loginResult=='1'"><app-reporter></app-reporter></div>
+<div *ngIf="loginResult=='1' && anonymous==false"><app-reporter></app-reporter></div>
+
+<div *ngIf="anonymous==true">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active"><a (click)="home()">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">User News</li>
+    </ol>
+    
+  </nav> 
+  <app-anonymous></app-anonymous>
+</div>
 <router-outlet></router-outlet>

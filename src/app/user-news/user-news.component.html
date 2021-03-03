@@ -1,0 +1,24 @@
+<div class="col-sm-5" >
+    <ng-container *ngFor="let n of news">
+  <mat-card style="max-width: 300px;">
+  
+    
+      <img mat-card-image src="assets/images/1.jpg" style="height: 300px;">
+      <mat-card-content align="left">
+      {{n.evidence}}
+    </mat-card-content>
+    <mat-card-header>
+      <!-- {{n.evidence}} -->
+      <!-- {{n.category}} -->
+      <mat-card-title>{{n.description}}</mat-card-title>
+      
+      
+    </mat-card-header>
+    <!-- <mat-card-content align="right">{{n.date}}</mat-card-content> -->
+    
+   
+  </mat-card>
+  <br><br>
+  </ng-container>
+  </div>
+

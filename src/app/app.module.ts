@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegionComponent } from './region/region.component';
 import {MatCardModule} from '@angular/material/card';
 import { AnonymousComponent } from './anonymous/anonymous.component';
+import { UserNewsComponent } from './user-news/user-news.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { AnonymousComponent } from './anonymous/anonymous.component';
     ReporterComponent,
     RegionComponent,
     AnonymousComponent,
+    UserNewsComponent,
     
   ],
   imports: [
@@ -32,7 +36,8 @@ import { AnonymousComponent } from './anonymous/anonymous.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],

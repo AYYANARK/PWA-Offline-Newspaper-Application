@@ -15,6 +15,7 @@ export class ReporterComponent implements OnInit {
   constructor(private _appService: AppService) { }
    reporter:FormGroup;
    news:any;
+   userNews:boolean=false;
   ngOnInit(): void {
     this.reporter = new FormGroup({
       heading: new FormControl('', []),
@@ -32,12 +33,16 @@ reset(){
   this.reporter.reset();
 
 }
+readerNews(){
+    this.userNews=true;
+    console.log(this.userNews);
+}
   newsSubmit(){
     let reporterSubmit= [];
     reporterSubmit.push(this.reporter.value);
     console.log(reporterSubmit);
     this._appService.newsSubmit(reporterSubmit).subscribe((newsData) => {
-      console.log(newsData);
+      console.log(newsData);    
       this.news=newsData;
       if(this.news==1){
         alert("News Uploaded!");

@@ -12,7 +12,6 @@ import { Router, ActivatedRoute, ParamMap, NavigationExtras } from '@angular/rou
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private dialog: MatDialog,private _appService: AppService,private router: Router,private route: ActivatedRoute) {}
   title = 'newspaper';
   loginFlag:boolean=false;
   signFlag:boolean=false;
@@ -21,7 +20,8 @@ export class AppComponent implements OnInit {
   logoutFlag:boolean=false;
   routes: ActivatedRoute;
   news:any;
- 
+  anonymous:boolean=false;
+  constructor(private dialog: MatDialog,private _appService: AppService,private router: Router,private route: ActivatedRoute) {}
  loginClick() {
      
     const dialogRef = this.dialog.open(LoginComponent, { disableClose: true,autoFocus:true,width:'350px',
@@ -52,7 +52,13 @@ ngOnInit(): void {
 logoutClick(){
    this.loginResult=0;
 }
-
+newsReport(){
+  this.anonymous=true;
+}
+home(){
+  this.loginResult=0;
+  this.anonymous=false;
+}
 
 signClick() {
 

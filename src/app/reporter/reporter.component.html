@@ -1,4 +1,6 @@
-<h2 align="center">Enter the news details</h2>
+<div *ngIf="userNews==false">
+<span style="margin-left:'70px';font-weight: bold;font-size: 25px;">Enter the news details</span>
+<span>&nbsp;&nbsp;<button type="button" (click)="readerNews()" class="btn btn-link">Read Reader's Reports</button></span>
 <br><br>
 <div class="reporterForm">
 <form [formGroup]="reporter">
@@ -52,7 +54,7 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Evidence File</label>
         <div class="col-sm-3">
-        <input type="file" id="evidence" class="form-control"
+        <input type="file" id="evidence" name="evidence" class="form-control"
         formControlName="evidence" required ngModel>
         </div>
     </div>
@@ -64,6 +66,11 @@
       </div>
       </div></div>
   </form>
+  </div>
+</div>
+  <div *ngIf="userNews==true">
+          <app-user-news></app-user-news>
+
   </div>
 
 

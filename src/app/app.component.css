@@ -11,6 +11,12 @@
     font-family: Californian FB;
   }
 
+  .card1{
+      max-height: 50%;
+      max-width: 40%;
+      /* background-color: rgb(243, 160, 229); */
+  }
+
   #companyName 
   {
      text-align: center;
